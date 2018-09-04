@@ -164,7 +164,7 @@ class Lists extends React.Component {
       <div>{forLoop}</div>
 
     )
-  }
+  } 
 }
 
 
