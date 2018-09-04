@@ -112,6 +112,42 @@ class Clock extends React.Component{
     );
   }
 }
+class Numbers extends React.Component{
+  constructor(props){
+    
+    super(props);
+    this.state = {numbers : 2}
+    this.changeToOne = this.changeToOne.bind(this);
+    // this.setState({numbers : 1})
+  }
+
+  changeToOne(){
+    // console.log(this.state)
+    if (this.state.numbers === 1){
+      this.setState({numbers : 2})
+    }
+    else{
+      this.setState({numbers : 1})
+
+    }
+  }
+
+  render(){
+    let button = this.state.numbers;
+    let showing ;
+    if(button === 2){
+      showing = <button onClick={this.changeToOne} >Abdul</button>
+    }
+    else{
+      showing = <button onClick={this.changeToOne} >Wahid</button>
+
+    }
+    return(
+      <div>{showing}</div>
+    );
+  }
+}
+
 
 
 // Clock compoenent ends
@@ -121,6 +157,7 @@ ReactDOM.render(
     <Game /> 
     <Login />
     <Clock />
+    <Numbers />
   </div>,
   document.getElementById('root')
 );
