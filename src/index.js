@@ -48,6 +48,8 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board />
+          <Clock />
+
         </div>
         <div className="game-info">
           <div>{/* status */}</div>
@@ -67,7 +69,7 @@ class Login extends React.Component {
     return (
       <div>
         <input type="text" />
-        <input type="password"/>
+        <input type="password" />
 
       </div>
     )
@@ -76,10 +78,10 @@ class Login extends React.Component {
 // My components end
 
 // Clock compoenent starts
-class Clock extends React.Component{
-  constructor(props){
+class Clock extends React.Component {
+  constructor(props) {
     super(props)
-    this.state = {date: new Date()};
+    this.state = { date: new Date() };
   }
 
   componentDidMount() {
@@ -96,11 +98,11 @@ class Clock extends React.Component{
 
   }
 
-  tick(){
+  tick() {
     this.setState({
       date: new Date()
     })
-    
+
   }
 
   render() {
@@ -112,52 +114,68 @@ class Clock extends React.Component{
     );
   }
 }
-class Numbers extends React.Component{
-  constructor(props){
-    
+class Numbers extends React.Component {
+  constructor(props) {
+
     super(props);
-    this.state = {numbers : 2}
+    this.state = { numbers: 2 }
     this.changeToOne = this.changeToOne.bind(this);
     // this.setState({numbers : 1})
   }
 
-  changeToOne(){
+  changeToOne() {
     // console.log(this.state)
-    if (this.state.numbers === 1){
-      this.setState({numbers : 2})
+    if (this.state.numbers === 1) {
+      this.setState({ numbers: 2 })
     }
-    else{
-      this.setState({numbers : 1})
+    else {
+      this.setState({ numbers: 1 })
 
     }
   }
 
-  render(){
+  render() {
     let button = this.state.numbers;
-    let showing ;
-    if(button === 2){
+    let showing;
+    if (button === 2) {
       showing = <button onClick={this.changeToOne} >Abdul</button>
     }
-    else{
+    else {
       showing = <button onClick={this.changeToOne} >Wahid</button>
 
     }
-    return(
+    return (
       <div>{showing}</div>
     );
   }
 }
 
+class Lists extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.state = {}
+
+  }
+  render() {
+    let mylist = ["abdul","wahid",3,4,5];
+    const forLoop=  mylist.map((it,index) => <p>{it}  {index}</p>)
+
+    return (
+      <div>{forLoop}</div>
+
+    )
+  }
+}
 
 
 // Clock compoenent ends
 
 ReactDOM.render(
   <div>
-    <Game /> 
+    <Game />
     <Login />
-    <Clock />
     <Numbers />
+    <Lists />
   </div>,
   document.getElementById('root')
 );
